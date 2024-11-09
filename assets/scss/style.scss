@@ -1,0 +1,49 @@
+.img-slider {
+    width: 100px;
+    aspect-ratio: 9/16;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.banner {
+    margin-top: 20vh;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 75px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: AutoRun 20s linear infinite;
+}
+
+.item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform:
+        rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg) )
+        translateZ(400px);
+}
+
+@keyframes AutoRun{
+    from{
+        transform: perspective(1000px) rotateX(-10deg) rotateY(0deg);
+    }
+    to{
+        transform: perspective(1000px) 
+        rotateX(-10deg)
+        rotateY(360deg);
+    }
+}
